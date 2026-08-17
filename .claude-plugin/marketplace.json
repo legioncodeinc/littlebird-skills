@@ -1,0 +1,30 @@
+{
+  "name": "littlebird-skills",
+  "owner": {
+    "name": "Littlebird",
+    "url": "https://littlebird.ai"
+  },
+  "metadata": {
+    "description": "Littlebird's official Claude skill marketplace. Voice-cloning skill builders today, more Littlebird skills coming.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "littlebird-voice-tools",
+      "source": "./",
+      "description": "Build your personal writing-voice skill from your own real data: mine your Littlebird memory via MCP, ingest your Facebook data export with a screenshot-guided walkthrough, or combine both into the deepest possible voice clone.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Mario Aldayuz"
+      },
+      "category": "productivity",
+      "keywords": [
+        "littlebird",
+        "voice",
+        "writing-style",
+        "facebook",
+        "personal-voice"
+      ]
+    }
+  ]
+}

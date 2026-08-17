@@ -1,0 +1,22 @@
+{
+  "name": "littlebird-voice-tools",
+  "version": "1.0.0",
+  "description": "Build your personal writing-voice skill from your own real data. Three guided skills: mine your Littlebird memory via the Littlebird MCP, ingest your Facebook data export with a screenshot-guided walkthrough, or combine both sources into the deepest possible voice clone that writes exactly like you and reads 100% human.",
+  "author": {
+    "name": "Mario Aldayuz",
+    "email": "mario@olliebot.ai",
+    "url": "https://littlebird.ai"
+  },
+  "homepage": "https://github.com/marioaldayuz/littlebird-skills",
+  "repository": "https://github.com/marioaldayuz/littlebird-skills",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "keywords": [
+    "littlebird",
+    "voice",
+    "writing-style",
+    "facebook",
+    "personal-voice",
+    "ghostwriting",
+    "skills"
+  ]
+}

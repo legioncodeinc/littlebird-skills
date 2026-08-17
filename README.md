@@ -2,9 +2,9 @@
 
 # Littlebird Skills
 
-### Your voice. Your data. Your skill.
+### Your work. Your record. Your skills.
 
-**Guided Claude skills that build a personal writing-voice clone from what you actually wrote - mined from Littlebird, your Facebook export, or both.**
+**Thirty Claude skills built on the Littlebird MCP. They read what already crossed your screen and what was already said on your calls, and hand you back something you can act on.**
 
 </div>
 
@@ -12,106 +12,244 @@
 
 ## What this is
 
-Every AI writing assistant has the same problem. It writes like an AI. Em dashes
-everywhere, "delve" and "seamless" in every paragraph, tidy conclusions nobody asked
-for. You can prompt around it for a while, but the voice drifts back because the model
-never actually learned YOURS.
+Littlebird watches your screen and transcribes your meetings. That means the record of
+your work already exists. What has been missing is anything that uses it.
 
-This repo fixes that with data instead of prompting. The skills in here walk you (or
-anyone you run them for) through collecting a real corpus of your own writing - months
-of posts, comments, DMs, even how you talk in meetings - then analyzing it into a
-calibrated voice skill: a persona brief, a linguistic fingerprint backed by real counts,
-a hard anti-AI-detection ruleset, your verbatim writing as ground truth, and generated
-samples you approved. The output installs into Claude as a skill, so every future draft
-comes out sounding like you wrote it at 2am, not like a chatbot.
+These skills use it. They find the subscription you have paid for and not opened in
+ninety days. They rebuild the pipeline that only lives in your head. They write the SOP
+for the thing you did last Thursday, because Littlebird watched you do it. They mine the
+good line you said on a call and forgot by Thursday, and hand it back as a draft.
 
-The method was proven on a real build: 1,703 Facebook posts mined into the
-`mario-aldayuz-voice` skill. These skills productize that exact process.
-
-## The skills
-
-| Skill | Data source | Use when |
-|---|---|---|
-| [`combined-voice-creator`](skills/combined-voice-creator/) | Littlebird MCP + Facebook export | You use Littlebird AND have a Facebook history. The deepest clone - public voice, DM voice, and spoken voice fused into one skill. |
-| [`facebook-voice-creator`](skills/facebook-voice-creator/) | Facebook data export | You want a voice skill from your Facebook history alone. Includes a screenshot-guided export walkthrough. |
-| [`littlebird-voice-creator`](skills/littlebird-voice-creator/) | Littlebird MCP | You use Littlebird and want your voice mined from captured writing, messages, and meeting transcripts. |
-
-Each skill is self-contained: a SKILL.md workflow, reference guides with the exact
-processing steps (including the Facebook mojibake fix and sanitization rules), the
-voice-skill template, and annotated screenshots of the Facebook export flow.
+Every one was built the same way: real domain research archived to primary sources
+first, then the skill written from it. Every claim a skill makes carries a receipt with
+a timestamp and the app it came from. When a skill cannot honestly measure something, it
+says so instead of producing a confident number.
 
 ## Install
 
-### As a Cowork plugin (recommended)
-
-This repo is a Claude plugin marketplace. In Claude Cowork or Claude Code, add it as a
-marketplace source and install the `littlebird-voice-tools` plugin. All three skills
-come with it.
+This repo is a Claude plugin marketplace. In Claude Cowork or Claude Code:
 
 ```text
 /plugin marketplace add legioncodeinc/littlebird-skills
 /plugin install littlebird-voice-tools@littlebird-skills
 ```
 
-### As individual skills
+Each folder under [`skills/`](skills/) is also a complete standalone skill. Zip one with
+a `.skill` extension, folder at the zip root, and upload it to Claude.
 
-Each folder under [`skills/`](skills/) is a complete, standalone skill. Zip one with a
-`.skill` extension (folder at the zip root) and upload it to Claude, or copy the folder
-into your harness's skills directory.
+**Requirements.** Most skills need the Littlebird MCP on a Power or Pro plan, connected
+at `https://mcp.littlebird.ai/mcp`. New to Littlebird? The code `E6GP4BQE` gets you two
+months free. The Facebook voice creator is the one skill that needs no Littlebird at all.
 
-## How a voice build works
+## How you use them
 
-1. **Collect.** Facebook export (Posts required, Messages and Profile optional, JSON
-   format, 6-12 months) and/or Littlebird MCP mining across every register you write in.
-2. **Sanitize.** Only YOUR words survive. Other people's comments, quoted content, and
-   anything a bot wrote for you gets dropped. Attribution is treated as guilty until
-   proven yours.
-3. **Confirm.** Every biography fact gets confirmed with you before it's encoded.
-   Littlebird can misread ambiguous screen captures, and a voice skill that fabricates
-   your history is worse than no skill.
-4. **Analyze.** Scripted stylometrics (your real dash, emoji, hashtag, and exclamation
-   behavior, with counts) plus deep register reading of your longest and shortest
-   pieces.
-5. **Approve.** The skill drafts samples in your voice - long form, short form, quick
-   statements - and you tune them until they pass the only test that matters: read it
-   out loud, and it sounds like you.
-6. **Ship.** Everything assembles into a progressive-disclosure skill (lean SKILL.md,
-   deep references) and saves to Claude. Raw private data gets deleted - only
-   distilled, confirmed, approved material ships.
+**Just ask.** Every skill carries its own trigger phrases. Say "who has not paid me",
+"what did I promise", "write an SOP for that", "who is about to churn", and the right
+skill picks itself up. You never invoke anything by name unless you want to.
 
-## What is Littlebird?
+**Or put it on a routine.** Littlebird routines are unattended agents that run on a
+schedule and push you a report. The split that makes this work:
+
+> **Routines observe. Cowork acts.**
+> A routine watches for a condition and writes a report. It cannot ask you a question,
+> hold an approval open, or write a file. So it names what it found and hands off. You
+> open Cowork, the skill picks up its own past reports, and does the heavy work.
+
+Skills that have a recurring mode will **set up their own routine**. They show you the
+exact prompt text and the schedule, you approve it, and it gets created. You do not go
+configure anything by hand.
+
+**Nothing gets sent.** Every skill that produces something for another human drafts it
+and holds it. Approving a plan is not approving the words, so you see the final text
+before anything leaves.
+
+---
+
+## The skills
+
+### Money and business operations
+
+| Skill | What it does | Mode |
+|---|---|---|
+| [money-leak-auditor](skills/money-leak-auditor/README.md) | Rebuilds every software charge you actually pay from what crossed your screen, then proves which tools you have not opened in 90 days | Monthly + on demand |
+| [renewal-sentinel](skills/renewal-sentinel/README.md) | A 90-day calendar of everything about to auto-charge, sorted by the date you have to decide by rather than the date you get billed | Weekly + on demand |
+| [invoice-chaser](skills/invoice-chaser/README.md) | Turns "they still have not paid" into a drafted follow-up, without ever chasing a client who already paid you | Weekly + on demand |
+| [deal-pipeline-reconstructor](skills/deal-pipeline-reconstructor/README.md) | Rebuilds the pipeline that only exists in your head into a board where every placement shows its evidence | Weekly + on demand |
+
+### Lead generation and growth
+
+| Skill | What it does | Mode |
+|---|---|---|
+| [lead-harvester](skills/lead-harvester/README.md) | Rebuilds the full list of people who raised a hand at your "comment KEYWORD" campaign, ranks them, drafts each first message | On demand + campaign daily |
+| [comment-to-crm-piper](skills/comment-to-crm-piper/README.md) | Catches new hand-raisers since the last run, dedupes against your CRM, tags by campaign, queues a first message | Daily |
+| [content-repurposer](skills/content-repurposer/README.md) | Turns one long piece into a week of derivatives that each take a different angle, so nobody reads the same idea five times | On demand |
+| [said-it-already](skills/said-it-already/README.md) | Mines what you already said well on calls, screens it, rebuilds it for reading, and hands you a bank of drafts | Weekly |
+| [testimonial-miner](skills/testimonial-miner/README.md) | Banks the praise you already earned as verbatim quotes, and tells you which ones you are allowed to publish | Monthly + on demand |
+| [competitor-watch](skills/competitor-watch/README.md) | Tracks what your market is actually talking about this week, from what crossed your own screen | Weekly |
+
+### Meetings and follow-through
+
+| Skill | What it does | Mode |
+|---|---|---|
+| [meeting-scribe](skills/meeting-scribe/README.md) | Turns one call into a sendable follow-up, a decisions record with the quote behind each, and a list of what never landed | Daily evening + on demand |
+| [commitment-tracker](skills/commitment-tracker/README.md) | A two-column ledger of what you owe and what you are owed, checked against evidence the thing actually got done | Weekly |
+| [who-am-i-ghosting](skills/who-am-i-ghosting/README.md) | Finds the conversations you left hanging, ranked by what the silence costs rather than how old it is | Weekly |
+| [pre-call-prep](skills/pre-call-prep/README.md) | A one screen brief for every call, where every line carries a fact you did not already have in your head | Daily |
+| [client-health-radar](skills/client-health-radar/README.md) | Which client is about to leave and which is quietly eating your margin, in bands backed by dated quotes | Weekly + on demand |
+
+### Personal productivity
+
+| Skill | What it does | Mode |
+|---|---|---|
+| [daily-brief](skills/daily-brief/README.md) | One screen every morning, built around the field that earns the open: what changed since yesterday | Daily |
+| [day-reconstructor](skills/day-reconstructor/README.md) | Rebuilds a work session into a dev log and a changelog block, including the problems no commit message records | Daily at session end |
+| [focus-forensics](skills/focus-forensics/README.md) | The structure of your week: where work held together, where it broke apart, what changed since last week | Weekly |
+| [learning-capturer](skills/learning-capturer/README.md) | Stops you re-debugging the same wall, filing each fix keyed on the error text you will actually search for | Weekly |
+| [weekly-review](skills/weekly-review/README.md) | One scorecard per week, composed from your other skills' reports, willing to say plainly that the week was poor | Weekly |
+
+### Knowledge and writing
+
+| Skill | What it does | Mode |
+|---|---|---|
+| [sop-forge](skills/sop-forge/README.md) | Point it at something you already did and it writes the SOP, because Littlebird watched you do it | On demand |
+| [knowledge-base-builder](skills/knowledge-base-builder/README.md) | Turns a project's calls and threads into the documentation pack that makes every future AI session productive | On demand + monthly refresh |
+| [osint-investigator](skills/osint-investigator/README.md) | Point it at a name and get one evidence-graded brief from your record plus their public footprint, disagreements left standing | On demand only |
+| [research-synthesizer](skills/research-synthesizer/README.md) | Give it a topic, get back what you already knew versus what is new, with working links | On demand + optional weekly |
+| [brand-voice-guardian](skills/brand-voice-guardian/README.md) | The last read before you hit send: marks up the draft, counts the AI tells, rewrites it in your voice | On demand only |
+
+### Meta and automation
+
+| Skill | What it does | Mode |
+|---|---|---|
+| [routine-architect](skills/routine-architect/README.md) | Scores your routines against nine failure modes and proves what is broken by quoting your own reports back | On demand + monthly |
+| [skill-suggester](skills/skill-suggester/README.md) | Finds the work you did by hand four times this quarter and drafts the SKILL.md for the one worth building | Monthly |
+
+### Voice
+
+The original three. Several skills above draft in your voice when one of these has been
+run, and say so plainly when none has.
+
+| Skill | What it does | Mode |
+|---|---|---|
+| [combined-voice-creator](skills/combined-voice-creator/README.md) | Your voice skill from both Littlebird memory and a Facebook export. The deepest clone | On demand |
+| [littlebird-voice-creator](skills/littlebird-voice-creator/README.md) | Your voice skill from Littlebird capture alone | On demand |
+| [facebook-voice-creator](skills/facebook-voice-creator/README.md) | Your voice skill from a Facebook export alone, with a screenshot-guided walkthrough | On demand |
+
+---
+
+## Which ones to put on a routine
+
+Routine slots are limited by your Littlebird plan, so treat them as scarce. Do not turn
+on fifteen routines in one afternoon. A report you stop opening is worse than no report,
+because it trains you to ignore the next one.
+
+### Start with five
+
+These five cover the most ground for the fewest slots, and each one hands off cleanly to
+a skill you run when you want to act.
+
+| Routine | When | Why this one first |
+|---|---|---|
+| [daily-brief](skills/daily-brief/README.md) | Daily, about 45 minutes before your first real decision | The only one you read every day. It pulls from the others, so it gets better as you add them |
+| [pre-call-prep](skills/pre-call-prep/README.md) | Daily, 18:30 the evening before | Evening beats morning, because it leaves you time to fix a forgotten commitment before the call |
+| [commitment-tracker](skills/commitment-tracker/README.md) | Weekly, Monday 08:00 | The column nobody tracks is what other people owe you |
+| [money-leak-auditor](skills/money-leak-auditor/README.md) | Monthly | The one that pays for itself on the first run |
+| [weekly-review](skills/weekly-review/README.md) | Weekly, Friday 16:30 | Reads the other four rather than re-deriving them, so it costs almost nothing to add |
+
+### Add as they earn their place
+
+**Daily.** [meeting-scribe](skills/meeting-scribe/README.md) at 18:00 if you run more
+than two calls a day. [day-reconstructor](skills/day-reconstructor/README.md) at your
+session end plus an hour if you write code.
+[comment-to-crm-piper](skills/comment-to-crm-piper/README.md) at 08:00 only while a
+campaign is live, then pause it.
+
+**Weekly.** [who-am-i-ghosting](skills/who-am-i-ghosting/README.md),
+[client-health-radar](skills/client-health-radar/README.md), and
+[competitor-watch](skills/competitor-watch/README.md) all default to Monday 07:30, so
+stagger them across the morning rather than stacking three reports at once.
+[invoice-chaser](skills/invoice-chaser/README.md) and
+[renewal-sentinel](skills/renewal-sentinel/README.md) on Monday.
+[deal-pipeline-reconstructor](skills/deal-pipeline-reconstructor/README.md) midweek.
+[said-it-already](skills/said-it-already/README.md) and
+[learning-capturer](skills/learning-capturer/README.md) Friday afternoon, when the week
+has something in it. [focus-forensics](skills/focus-forensics/README.md) Monday, since
+it reports on the week that just ended.
+
+**Monthly.** [testimonial-miner](skills/testimonial-miner/README.md) and
+[skill-suggester](skills/skill-suggester/README.md) on the 1st.
+[routine-architect](skills/routine-architect/README.md) once a month to audit everything
+above, which is the routine that keeps the other routines honest.
+
+### Deliberately never on a routine
+
+[sop-forge](skills/sop-forge/README.md),
+[osint-investigator](skills/osint-investigator/README.md),
+[brand-voice-guardian](skills/brand-voice-guardian/README.md), and the three voice
+creators. Each needs an approval gate or a redaction pass that an unattended run cannot
+hold open. `osint-investigator` refuses a routine for a second reason worth stating: a
+standing job that periodically re-researches a named person is surveillance, not
+diligence.
+
+---
+
+## What makes these different
+
+Four rules hold across all thirty.
+
+**Receipts or it did not happen.** Every finding carries its source, the app, and the
+timestamp: `[Tuesday, August 11, 2026 23:40 EDT | chrome]`. You can check any line.
+
+**Observed, inferred, external, and unknown are four different things.** A skill never
+promotes an inference to an observation by dropping the hedge, and never turns an absence
+into a negative finding. "No evidence of X in 90 days" and "X did not happen" are
+different claims, and only one of them is supportable.
+
+**Skills refuse to produce numbers they cannot honestly measure.**
+`client-health-radar` will not give you a health score, because transcription drops the
+sentiment-bearing word in roughly one utterance in six. `focus-forensics` will not tell
+you that you lost six hours, because periodic snapshots cannot measure duration.
+`deal-pipeline-reconstructor` will not give you a win probability. Each of those refusals
+came out of the research, and each is written into the skill.
+
+**Confirm before you encode, confirm before you send.** Anything about to be recorded as
+durable fact gets confirmed first. Anything about to reach another person gets approved
+as final text, not as a summary of the intent.
+
+Behind each skill sits its own research archive: primary sources fetched and stored one
+file per source with a URL and a fetch date, a cited distillation, and domain guides that
+never make a claim the archive does not support. Where sources conflicted, both readings
+are recorded. Where coverage was thin, the gap is named rather than filled with a guess.
+Three hundred and eighty sources across the marketplace.
+
+## What is Littlebird
 
 [Littlebird](https://littlebird.ai) is an ambient memory app for your computer. It
-captures your screen activity, joins and transcribes your meetings, and connects your
-calendar - then exposes all of it to Claude through an MCP server
-(`https://mcp.littlebird.ai/mcp`, [docs](https://support.littlebird.ai/docs/mcp/)).
-That memory is what makes the voice mining possible: 1-2 weeks of normal computer use
-gives Claude a corpus of how you actually write and speak.
-
-New to Littlebird? The skills include install links for Windows, Intel Mac, and Apple
-Silicon, and the code `E6GP4BQE` gets you two months free.
+captures your screen activity, joins and transcribes your meetings, connects your
+calendar, and exposes all of it to Claude through an MCP server
+([docs](https://support.littlebird.ai/docs/mcp/)). That memory is what every skill here
+runs on. One to two weeks of normal computer use is enough for most of them to be useful.
 
 ## Repo layout
 
 ```
 littlebird-skills/
 ├── .claude-plugin/
-│   ├── plugin.json          The littlebird-voice-tools plugin manifest
-│   └── marketplace.json     Marketplace source manifest (this repo IS a marketplace)
-├── skills/
-│   ├── combined-voice-creator/
-│   ├── facebook-voice-creator/
-│   └── littlebird-voice-creator/
+│   ├── plugin.json          Plugin manifest
+│   └── marketplace.json     Marketplace manifest (this repo IS a marketplace)
+├── skills/                  30 skills, each with SKILL.md, README.md, references/
 ├── AGENTS.md                Briefing for coding agents working in this repo
 ├── CLAUDE.md                Claude-specific pointer to AGENTS.md
 ├── LICENSE.md
 └── README.md
 ```
 
-More Littlebird skills are coming - the marketplace manifest is built to grow.
+Each skill folder holds a `README.md` for humans, a `SKILL.md` for the model,
+`references/` with the domain guides, and `references/research/` with the archived
+sources everything traces back to.
 
 ## License and attribution
 
-Created by **Mario Aldayuz and Legion Code Inc.**. See [LICENSE.md](LICENSE.md) for terms.
+Created by **Mario Aldayuz and Legion Code Inc.** See [LICENSE.md](LICENSE.md) for terms.
 
-Built for people who sound like themselves. Go post something.
+Built for people who want the record to actually do something. Go check what you are paying for.

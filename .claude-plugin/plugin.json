@@ -1,7 +1,7 @@
 {
-  "name": "littlebird-voice-tools",
-  "version": "1.0.0",
-  "description": "Build your personal writing-voice skill from your own real data. Three guided skills: mine your Littlebird memory via the Littlebird MCP, ingest your Facebook data export with a screenshot-guided walkthrough, or combine both sources into the deepest possible voice clone that writes exactly like you and reads 100% human.",
+  "name": "littlebird-toolkit",
+  "version": "2.0.0",
+  "description": "Thirty skills that turn your Littlebird memory into work you can act on. Find the subscriptions you pay for and never open, rebuild the pipeline living in your head, write the SOP for the thing you did last Thursday because Littlebird watched you do it, harvest every commitment from your meetings and check whether it got done, mine your calls for the content you already said well, and clone your writing voice from your own real corpus. Every finding carries a timestamped receipt, and every skill refuses to produce numbers it cannot honestly measure. Requires the Littlebird MCP on a Power or Pro plan.",
   "author": {
     "name": "Mario Aldayuz",
     "email": "mario@olliebot.ai",
@@ -12,11 +12,18 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "keywords": [
     "littlebird",
-    "voice",
-    "writing-style",
-    "facebook",
+    "ambient-memory",
+    "screen-capture",
+    "meeting-notes",
+    "routines",
+    "saas-spend",
+    "lead-generation",
+    "sop",
+    "crm",
+    "due-diligence",
     "personal-voice",
-    "ghostwriting",
-    "skills"
+    "writing-style",
+    "agency",
+    "solo-founder"
   ]
 }

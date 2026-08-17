@@ -5,25 +5,34 @@
     "url": "https://littlebird.ai"
   },
   "metadata": {
-    "description": "Littlebird's official Claude skill marketplace. Voice-cloning skill builders today, more Littlebird skills coming.",
-    "version": "1.0.0"
+    "description": "Littlebird's official Claude skill marketplace. Thirty skills built on the Littlebird MCP, covering money and vendor spend, lead generation, meetings and follow-through, personal productivity, knowledge capture, and personal writing voice. Each one is grounded in its own archived research and carries timestamped receipts for every claim.",
+    "version": "2.0.0"
   },
   "plugins": [
     {
-      "name": "littlebird-voice-tools",
+      "name": "littlebird-toolkit",
       "source": "./",
-      "description": "Build your personal writing-voice skill from your own real data: mine your Littlebird memory via MCP, ingest your Facebook data export with a screenshot-guided walkthrough, or combine both into the deepest possible voice clone.",
-      "version": "1.0.0",
+      "description": "Thirty skills that turn your Littlebird memory into work you can act on: SaaS spend and zombie subscription auditing, renewal and receivables watch, pipeline reconstruction, keyword campaign lead harvesting, CRM piping, content repurposing and testimonial mining, competitor tracking, meeting recaps and a two-way commitment ledger, pre-call briefs, daily and weekly digests, SOP generation from captured work, dev logs, a personal troubleshooting knowledge base, project documentation packs, evidence-graded person research, draft voice QA, routine auditing, and personal writing-voice cloning. Requires the Littlebird MCP on a Power or Pro plan.",
+      "version": "2.0.0",
       "author": {
         "name": "Mario Aldayuz"
       },
       "category": "productivity",
       "keywords": [
         "littlebird",
-        "voice",
+        "ambient-memory",
+        "screen-capture",
+        "meeting-notes",
+        "routines",
+        "saas-spend",
+        "lead-generation",
+        "sop",
+        "crm",
+        "due-diligence",
+        "personal-voice",
         "writing-style",
-        "facebook",
-        "personal-voice"
+        "agency",
+        "solo-founder"
       ]
     }
   ]

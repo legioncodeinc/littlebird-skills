@@ -31,7 +31,7 @@ This repo is a Claude plugin marketplace. In Claude Cowork or Claude Code:
 
 ```text
 /plugin marketplace add legioncodeinc/littlebird-skills
-/plugin install littlebird-voice-tools@littlebird-skills
+/plugin install littlebird-toolkit@littlebird-skills
 ```
 
 Each folder under [`skills/`](skills/) is also a complete standalone skill. Zip one with
